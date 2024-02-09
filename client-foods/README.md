@@ -1,6 +1,6 @@
 # React + Vite
 
-Trong config .env.logcal
+Trong config .env.local
 
 VITE_apiKey = AIzaSyDim9rMlRYW3uv5kxnX9AWhS1mKbDL_r0g
 VITE_authDomain = vdev-foods.firebaseapp.com
