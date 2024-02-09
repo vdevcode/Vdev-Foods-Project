@@ -1,8 +1,14 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Trong config .env.logcal
 
-Currently, two official plugins are available:
+VITE_apiKey = AIzaSyDim9rMlRYW3uv5kxnX9AWhS1mKbDL_r0g
+VITE_authDomain = vdev-foods.firebaseapp.com
+VITE_projectId = vdev-foods
+VITE_storageBucket = vdev-foods.appspot.com
+VITE_messagingSenderId = 853479225112
+VITE_appId = 1:853479225112:web:f2711e3790f9c43fc1906d
+VITE_IMG_HOSTING_KEY = 2bd368dc1e020dbb02d637481ec77786
+VITE_Stripe_PK = pk_test_51Oh64LGldEXa2aDJIQSfzutoGkjGtnTVwjgKlRQ6BF13lpEBGsdYce8b5sLY4YMZGNEMqVE57gDalCVvfbIQxsi700LYaifFNS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
