@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+header {
+  z-index: 100;
+}
+
+.section-container {
+  @apply max-w-screen-2xl container mx-auto px-4 lg:px-24;
+}
+
+.slick-next,
+.slick-prev {
+  /* display: none !important; */
+}

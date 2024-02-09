@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Bánh Biscotti",
+        "recipe": "Bánh Biscotti Nguyên Cám siêu hạt 200gr không đường, món chuẩn ăn kiêng An Nhiên Food",
+        "image": "./src/assets/images/foods/giamcan/1.png",
+        "category": "Món ăn kiêng",
+        "price": 225.500
+    },
+    {
+        "name": "Khoai lang sấy mật ong",
+        "recipe": "Khoai lang sấy mật ong pet🍟FREESHIP🍟200Gam LHYFOOD thơm giòn đặc biệt, món ăn kiêng",
+        "image": "./src/assets/images/foods/giamcan/2.png",
+
+        "category": "Món ăn kiêng",
+        "price": 68.500
+    },
+    {
+        "name": "Khô Gà Lá Chanh",
+        "recipe": "Dặc Sản Sài Gòn 25k/100g Khô Gà Lá Chanh Loại Ngon thientustoret",
+        "image": "./src/assets/images/foods/anvat/1.png",
+
+        "category": "Món ăn vặt",
+        "price": 192.000
+    },
+    {
+        "name": "Bánh tráng phơi sương",
+        "recipe": "COMBO Bánh tráng phơi sương 1kg TIGER FOOD Bánh Tráng + Muối Tôm Hành Phi + Bơ béo + Tóp Mỡ + Sốt tắc FREESHIP",
+        "image": "./src/assets/images/foods/anvat/2.png",
+
+        "category": "Món ăn vặt",
+        "price": 98.000
+    }
+]
