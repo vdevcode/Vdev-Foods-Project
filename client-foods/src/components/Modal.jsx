@@ -36,7 +36,7 @@ const Modal = () => {
           photoURL: result?.user?.photoURL
         };
         axios
-          .post("http://localhost:6001/users", userInfor)
+          .post("https://be-vdev-foods-project.vercel.app/users", userInfor)
           .then((response) => {
             // console.log(response);
             alert("Đăng nhập thành công!");
@@ -64,7 +64,7 @@ const Modal = () => {
           photoURL: result?.user?.photoURL
         };
         axios
-          .post("http://localhost:6001/users", userInfor)
+          .post("https://be-vdev-foods-project.vercel.app/users", userInfor)
           .then((response) => {
             // console.log(response);
             alert("Đăng nhập thành công!");

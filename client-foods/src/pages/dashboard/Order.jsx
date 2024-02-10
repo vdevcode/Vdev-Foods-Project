@@ -10,7 +10,7 @@ const Order = () => {
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:6001/payments?email=${user?.email}`,
+        `https://be-vdev-foods-project.vercel.app/payments?email=${user?.email}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -31,12 +31,12 @@ const Order = () => {
 
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 pb-16 my-4 sm:my-10 px-4">
-      <div className="py-24 flex flex-col justify-center items-center gap-8">
+      <div className="pt-24 pb-8 sm:py-24 flex flex-col justify-center items-center gap-8">
         <div className="text-center">
           <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
             Tất cả<span className="text-green"> đơn hàng</span>
           </h2>
-          <p className="text-[#4A4A4A] mt-[10px] text-[1rem] md:text-xl">
+          <p className="text-[#4A4A4A] text-[1rem] md:text-xl">
             Đơn hàng mà bạn đã mua.
           </p>
         </div>

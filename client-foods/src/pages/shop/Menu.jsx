@@ -14,7 +14,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:6001/menu");
+        const response = await fetch("https://be-vdev-foods-project.vercel.app/menu");
         const data = await response.json();
         setMenu(data);
         setFilteredItems(data);
@@ -79,7 +79,7 @@ const Menu = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto px-4 lg:px-24 bg-gradient-to-r from-[#FAFAFA] to-100%">
       {/* text */}
-      <div className="py-24 flex flex-col  justify-center items-center gap-8">
+      <div className="pt-24 pb-8 sm:py-24 flex flex-col  justify-center items-center gap-8">
         {/* menu  */}
         <div className="text-center">
           <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
@@ -160,7 +160,7 @@ const Menu = () => {
         </div>
 
         {/* product */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}

@@ -13,7 +13,7 @@ const OurServices = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="md:w-1/2">
           <div className="text-left md:w-4/5">
-            <p className="text-red uppercase tracking-wide">Câu chuyện & Dịch vụ của chúng tôi</p>
+            <p className="text-green uppercase tracking-wide">Câu chuyện & Dịch vụ của chúng tôi</p>
             <h2 className="text-[1rem] lg:text-l mt-2  md:leading-snug leading-snug">Xây dựng lên thương hiệu Vdev Foods</h2>
             <p className="my-5 text-secondary leading-[30px]">
             Bắt nguồn từ niềm đam mê, chày cối code thâu đêm và ra mắt shop, đơn giản thế thôi.

@@ -23,7 +23,7 @@ const CartPay = () => {
       confirmButtonText: "không mua!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:6001/cart/${cart._id}`, {
+        fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,7 +49,7 @@ const CartPay = () => {
   //descrase
   const handleDescrease = (cart) => {
     if (cart.quantity > 1) {
-      fetch(`http://localhost:6001/cart/${cart._id}`, {
+      fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const CartPay = () => {
   //increase
   const handleIncrease = (cart) => {
     if (cart.quantity < 10) {
-      fetch(`http://localhost:6001/cart/${cart._id}`, {
+      fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +126,7 @@ const CartPay = () => {
 
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 pb-16 px-4">
-      <div className="py-24 flex flex-col  justify-center items-center gap-8">
+      <div className="pt-24 pb-8 sm:py-24 flex flex-col  justify-center items-center gap-8">
         {/* banner  */}
         <div className="text-center">
           <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">

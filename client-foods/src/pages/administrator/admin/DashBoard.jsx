@@ -173,7 +173,7 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      <div style={{ width: '100%', height: 300 }} className="mt-4">
+      <div style={{ width: '100%', height: 300 }} className="mt-4 border rounded-md border-black">
         <ResponsiveContainer>
           <ComposedChart
             width={500}

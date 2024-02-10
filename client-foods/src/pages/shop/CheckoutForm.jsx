@@ -12,8 +12,8 @@ const CheckoutForm = ({ cart, cartTotals }) => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const [successPayment, setSuccessPayment] = useState("");
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Tỷ giá hối đoái từ VND sang USD (tính theo tỷ giá thực tế hoặc cung cấp bởi dịch vụ hối đoái)
   const exchangeRate = 0.041;
@@ -102,7 +102,7 @@ const CheckoutForm = ({ cart, cartTotals }) => {
           menuItems: cart.map((item, index) => item.menuItemId),
         };
         axiosSecure.post("/payments", paymentInfor).then((res) => {
-            navigate("/order")
+          navigate("/order");
           console.log(res.data);
           alert("Thanh toán thành công!!!");
         });
@@ -114,11 +114,20 @@ const CheckoutForm = ({ cart, cartTotals }) => {
 
   return (
     <div>
+      <div className="text-center mb-7 ">
+          <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
+            Thông tin<span className="text-green"> đơn hàng</span>
+          </h2>
+          <p className="text-[#4A4A4A] text-[1rem] md:text-xl">
+            Xem và thanh toán đơn hàng.
+          </p>
+        </div>
       <div className="flex flex-col md:flex-row justify-between gap-6 items-start">
+        
         {/* left */}
         <div className="md:w-1/2 space-y-3 w-full text-[.9rem]">
-          <h3 className="text-green">Thông tin thanh toán</h3>
-          <p className="border border-black p-2 rounded-2xl">
+          {/* <h3 className="text-green">Thông tin thanh toán</h3> */}
+          <p className="border border-black px-2 py-4 rounded-2xl">
             Tổng sản phẩm: {cart.length}, bao gồm:{" "}
             {cart.map((item, index) => (
               <p className="text-red flex  items-center " key={index}>
