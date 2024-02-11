@@ -14,6 +14,8 @@ import { FaPersonCircleQuestion } from "react-icons/fa6";
 import Login from "../components/Login";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import { MdLibraryBooks } from "react-icons/md";
+import { FaTextHeight } from "react-icons/fa";
 
 const DashBoardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -33,8 +35,9 @@ const DashBoardLayout = () => {
           <FaCartShopping /> Món ăn
         </Link>
       </li>
+      
       <li>
-        <Link to="/follow-menu">
+        <Link to="/order">
           <FaLocationArrow /> Theo dõi đơn hàng
         </Link>
       </li>
@@ -96,7 +99,7 @@ const DashBoardLayout = () => {
               {/* Sidebar content here */}
               <li>
                 <Link to="/">
-                  <img src={logo} className="w-[6rem]" alt="" />
+                  <img src={logo} className="w-[60px] md:w-[80px]" alt="" />
                 </Link>
               </li>
               <li className="my-3">
@@ -131,6 +134,18 @@ const DashBoardLayout = () => {
                 <Link to="/dashboard/manage-items">
                   {" "}
                   <RiEdit2Fill /> Quản lí sản phẩm
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/add-blog">
+                  {" "}
+                  <FaTextHeight /> Viết bài blogs
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manage-blogs">
+                  {" "}
+                  <MdLibraryBooks /> Quản lí bài viết blogs
                 </Link>
               </li>
               <li>

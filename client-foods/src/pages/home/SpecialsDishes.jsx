@@ -13,7 +13,7 @@ const SpecialsDishes = () => {
   const slider = useRef(null);
 
   useEffect(() => {
-    fetch("https://be-vdev-foods-project.vercel.app/menu")
+    fetch("http://localhost:6001/menu")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Kiểm tra network có vấn đề: ${res.statusText}`);

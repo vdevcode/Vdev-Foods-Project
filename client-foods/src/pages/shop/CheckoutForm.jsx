@@ -119,7 +119,7 @@ const CheckoutForm = ({ cart, cartTotals }) => {
             Thông tin<span className="text-green"> đơn hàng</span>
           </h2>
           <p className="text-[#4A4A4A] text-[1rem] md:text-xl">
-            Xem và thanh toán đơn hàng.
+            Hình thức thanh toán trả trước
           </p>
         </div>
       <div className="flex flex-col md:flex-row justify-between gap-6 items-start">
@@ -127,11 +127,12 @@ const CheckoutForm = ({ cart, cartTotals }) => {
         {/* left */}
         <div className="md:w-1/2 space-y-3 w-full text-[.9rem]">
           {/* <h3 className="text-green">Thông tin thanh toán</h3> */}
-          <p className="border border-black px-2 py-4 rounded-2xl">
-            Tổng sản phẩm: {cart.length}, bao gồm:{" "}
+          <p className="text-red mb-2">Tổng số lượng sản phẩm: {cart.length}</p>
+          <p className="bg-black px-2 py-4 rounded-sm">
+
             {cart.map((item, index) => (
-              <p className="text-red flex  items-center " key={index}>
-                {item.name} (<p className="text-black">số lượng:</p>{" "}
+              <p className="text-green flex  items-center " key={index}>
+                {item.name} (<p className="text-white">số lượng:</p>{" "}
                 {item.quantity} x {item.price})
               </p>
             ))}{" "}
@@ -150,7 +151,7 @@ const CheckoutForm = ({ cart, cartTotals }) => {
           </p>
         </div>
         {/* right */}
-        <div className="md:w-1/3 w-full space-y-3 card shrink-0 max-w-sm border border-black px-4 py-8">
+        <div className="md:w-1/3 w-full space-y-3 card rounded-sm shrink-0 max-w-sm border border-black px-4 py-8">
           <progress className="progress w-full "></progress>
           <h3 className="text-center py-4">Thông tin thanh toán</h3>
           <p className="text-center pb-4">

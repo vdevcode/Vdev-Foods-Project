@@ -23,7 +23,7 @@ const CartPay = () => {
       confirmButtonText: "không mua!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
+        fetch(`http://localhost:6001/cart/${cart._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,7 +49,7 @@ const CartPay = () => {
   //descrase
   const handleDescrease = (cart) => {
     if (cart.quantity > 1) {
-      fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
+      fetch(`http://localhost:6001/cart/${cart._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const CartPay = () => {
   //increase
   const handleIncrease = (cart) => {
     if (cart.quantity < 10) {
-      fetch(`https://be-vdev-foods-project.vercel.app/cart/${cart._id}`, {
+      fetch(`http://localhost:6001/cart/${cart._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ const CartPay = () => {
                       <label>{index + 1}</label>
                     </th>
                     <td>
-                      <Link to={`/cart/${cart._id}`}>
+                      <Link to={`/menu/${cart._id}`}>
                         <div className="flex items-center gap-3">
                           <div className="avatar cursor-pointer">
                             <div className="mask mask-squircle w-12 h-12">
@@ -246,7 +246,7 @@ const CartPay = () => {
             </Link>
             <p className="text-center w-full sm:w-[40px]">hoặc</p>
             <Link
-              to="/"
+              to="/ship-code"
               className="btn bg-black text-white w-full sm:w-[200px]"
             >
               <button>Thanh toán shipcode</button>

@@ -14,7 +14,9 @@ const Menu = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://be-vdev-foods-project.vercel.app/menu");
+        const response = await fetch(
+          "http://localhost:6001/menu"
+        );
         const data = await response.json();
         setMenu(data);
         setFilteredItems(data);
@@ -79,7 +81,7 @@ const Menu = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto px-4 lg:px-24 bg-gradient-to-r from-[#FAFAFA] to-100%">
       {/* text */}
-      <div className="pt-24 pb-8 sm:py-24 flex flex-col  justify-center items-center gap-8">
+      <div className="pt-24 pb-10 sm:py-24 flex flex-col  justify-center items-center gap-8">
         {/* menu  */}
         <div className="text-center">
           <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
@@ -88,8 +90,8 @@ const Menu = () => {
           <p className="text-[#4A4A4A] mt-[10px] text-[1rem] md:text-xl">
             Đa dạng các loại sản phẩm đồ ăn, thức uống với giá hot sale
           </p>
-          <button className="bg-green font-primary btn mt-[8px] text-white px-6">
-             Mua hàng tại đây
+          <button className="bg-green w-full md:w-[200px] font-primary btn mt-[8px] text-white px-6">
+            Mua hàng tại đây
           </button>
         </div>
       </div>

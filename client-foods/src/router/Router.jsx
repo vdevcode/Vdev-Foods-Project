@@ -17,6 +17,12 @@ import UpdateMenu from "../pages/administrator/admin/UpdateMenu";
 import ProcessCheckout from "../pages/shop/ProcessCheckout";
 import Order from "../pages/dashboard/Order";
 import ManagerBooking from "../pages/administrator/admin/ManagerBooking";
+import SingleMenu from "../pages/shop/SingleMenu";
+import CheckShip from "../pages/shop/CheckShip";
+import Blog from "../pages/blog/Blog";
+import SingleBlog from "../pages/blog/singleBlog";
+import AddBlog from "../pages/administrator/admin/AddBlog";
+import ManagerBlogs from "../pages/administrator/admin/ManagerBlogs";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +42,16 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/menu/:id",
+        element: (
+          <PrivateRoute>
+            <SingleMenu />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:6001/menu/${params.id}`),
+      },
+      {
         path: "/update-profile",
         element: <UpdateProfile />,
       },
@@ -48,11 +64,29 @@ const router = createBrowserRouter([
         path: "process-checkout",
         element: <ProcessCheckout />,
       },
+      {
+        path: "ship-code",
+        element: <CheckShip />,
+      },
       //order
       {
         path: "/order",
-        element: <Order/>
-      }
+        element: <Order />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: (
+          <PrivateRoute>
+            <SingleBlog />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:6001/blog/${params.id}`),
+      },
     ],
   },
   {
@@ -86,6 +120,10 @@ const router = createBrowserRouter([
         element: <AddMenu />,
       },
       {
+        path: "add-blog",
+        element: <AddBlog/>
+      },
+      {
         path: "manager-booking",
         element: <ManagerBooking />,
       },
@@ -94,10 +132,14 @@ const router = createBrowserRouter([
         element: <ManagerItems />,
       },
       {
+        path: "manage-blogs",
+        element: <ManagerBlogs/>
+      },
+      {
         path: "update-menu/:id",
         element: <UpdateMenu />,
         loader: ({ params }) =>
-          fetch(`https://be-vdev-foods-project.vercel.app/menu/${params.id}`),
+          fetch(`http://localhost:6001/menu/${params.id}`),
       },
     ],
   },

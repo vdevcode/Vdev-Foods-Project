@@ -25,7 +25,7 @@ const Navbar = () => {
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://be-vdev-foods-project.vercel.app/payments?email=${user?.email}`,
+        `http://localhost:6001/payments?email=${user?.email}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -35,7 +35,6 @@ const Navbar = () => {
       return res.json();
     },
   });
-
 
   // const {user} = useContext(AuthContext)
   // console.log(user);
@@ -93,15 +92,13 @@ const Navbar = () => {
             <li>
               <a>Theo dõi đơn hàng</a>
             </li> */}
-            <li>
-              Sắp ra mắt...
-            </li>
+            <li>Sắp ra mắt...</li>
           </ul>
         </details>
       </li>
-      {/* <li>
-        <a>Ưu đãi</a>
-      </li> */}
+      <li>
+        <Link to="/blog">Blogs</Link>
+      </li>
     </>
   );
   return (
@@ -182,7 +179,7 @@ const Navbar = () => {
           </label>
 
           {user ? (
-            <Profile user={user} logout={logout}  orders={orders}/>
+            <Profile user={user} logout={logout} orders={orders} />
           ) : (
             <button
               onClick={() => document.getElementById("my_modal_5").showModal()}

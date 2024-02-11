@@ -10,7 +10,7 @@ const getAllMenuItems = async (req, res) => {
   }
 };
 
-//post menu
+//post menuh
 const postItemMenu = async (req, res) => {
   const newItem = req.body;
   try {

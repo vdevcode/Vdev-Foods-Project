@@ -17,6 +17,8 @@ const ManagerBooking = () => {
     },
   });
 
+
+
   const formatDate = (createAt) => {
     const createAtDate = new Date(createAt);
     const day = createAtDate.getDate();
@@ -37,6 +39,30 @@ const ManagerBooking = () => {
       }
     });
   };
+
+  const handleDeleteBooking = async (items) => {
+    Swal.fire({
+      title: "Bạn có chắc không?",
+      text: "Bạn sẽ không thể quay lại điều này!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Vâng, xóa nó đi!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/payments/${items._id}`);
+        if (res) {
+          refetch();
+          Swal.fire({
+            title: "Đã xóa!",
+            text: "Đơn hàng của bạn đã bị xóa.",
+            icon: "success",
+          });
+        }
+      }
+    });
+  }
 
   return (
     <div className="w-full md:w-[870px] mt-4">
@@ -114,7 +140,7 @@ const ManagerBooking = () => {
                     )}
                   </td>
                   <td>
-                    <button className="btn btn-ghost btn-xs border bg-red border-red text-white">
+                    <button onClick={() => handleDeleteBooking(order)} className="btn btn-ghost btn-xs border bg-red border-red text-white">
                       <FaTrashAlt />
                     </button>
                   </td>

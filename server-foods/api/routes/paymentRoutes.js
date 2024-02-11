@@ -29,7 +29,9 @@ router.get("/", verifyToken, async (req, res) => {
   try {
     const decodedEmail = req.decoded.email;
     if (email != decodedEmail) {
-      return res.status(404).json({ message: "Email không đúng với tài khoản" });
+      return res
+        .status(404)
+        .json({ message: "Email không đúng với tài khoản" });
     }
 
     const result = await Payment.find(query).sort({ createAt: -1 }).exec();
@@ -60,11 +62,30 @@ router.patch("/:id", async (req, res) => {
       { new: true, runValidators: true }
     );
 
-    if(!updatedStatus){
-      return res.status(404).json({message: "Không thấy đơn hàng để duyệt"})
+    if (!updatedStatus) {
+      return res.status(404).json({ message: "Không thấy đơn hàng để duyệt" });
     }
 
-    res.status(200).json(updatedStatus)
+    res.status(200).json(updatedStatus);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+//deleted payment
+router.delete("/:id", async (req, res) => {
+  const payId = req.params.id;
+  try {
+    deletedPay = await Payment.findByIdAndDelete(payId);
+    if (!deletedPay) {
+      {
+        return res
+          .status(401)
+          .json({ message: "Không tìm thấy đơn hàng để xoá" });
+      }
+    }
+
+    res.status(200).json({ message: "Xoá sản phẩm này thành công!" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
