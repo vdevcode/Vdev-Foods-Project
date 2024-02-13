@@ -23,6 +23,7 @@ import Blog from "../pages/blog/Blog";
 import SingleBlog from "../pages/blog/singleBlog";
 import AddBlog from "../pages/administrator/admin/AddBlog";
 import ManagerBlogs from "../pages/administrator/admin/ManagerBlogs";
+import SpinningWheel from "../components/SpinningWheel";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:6001/menu/${params.id}`),
+          fetch(`https://be-vdev-foods-project.vercel.app/menu/${params.id}`),
       },
       {
         path: "/update-profile",
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
       {
         path: "/cart-pay",
         element: <CartPay />,
+      },
+      //
+      {
+        path: "/wheel",
+        element: <SpinningWheel/>
       },
       //payment
       {
@@ -85,7 +91,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:6001/blog/${params.id}`),
+          fetch(`https://be-vdev-foods-project.vercel.app/blog/${params.id}`),
       },
     ],
   },
@@ -139,7 +145,7 @@ const router = createBrowserRouter([
         path: "update-menu/:id",
         element: <UpdateMenu />,
         loader: ({ params }) =>
-          fetch(`http://localhost:6001/menu/${params.id}`),
+          fetch(`https://be-vdev-foods-project.vercel.app/menu/${params.id}`),
       },
     ],
   },

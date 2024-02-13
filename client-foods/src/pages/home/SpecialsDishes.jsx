@@ -13,7 +13,7 @@ const SpecialsDishes = () => {
   const slider = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:6001/menu")
+    fetch("https://be-vdev-foods-project.vercel.app/menu")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Kiểm tra network có vấn đề: ${res.statusText}`);
@@ -99,10 +99,10 @@ const SpecialsDishes = () => {
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 py-4 sm:py-16">
       {/* left */}
       <div className="text-center">
-        <p className="text-green uppercase tracking-wide">
+        <p className="text-green uppercase tracking-wide font-bold md:text-2xl text-[.8rem]">
             Phổ biến và tin dùng nhiều nhất
         </p>
-        <h2 className=" text-[1rem] lg:text-l mt-2  md:leading-snug leading-snug md:w-[520px]">
+        <h2 className=" md:text-[1rem] lg:text-l mt-2  md:leading-snug leading-snug md:w-[520px] text-[.8rem]">
       Sản phẩm dùng nhiều và đa dạng
         </h2>
       </div>

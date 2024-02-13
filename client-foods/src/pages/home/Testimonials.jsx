@@ -12,9 +12,9 @@ const Testimonials = () => {
         </div>
         <div className="md:w-1/2">
           <div className="text-left md:w-4/5">
-            <p className="subtitle">Lời chứng thực</p>
-            <h2 className="title">Khách hàng nói gì?</h2>
-            <blockquote className="my-5 text-secondary leading-[30px]">
+            <p className="subtitle md:text-xl text-[.8rem]">Lời chứng thực</p>
+            <h2 className="title md:text-xl text-[.8rem]">Khách hàng nói gì?</h2>
+            <blockquote className="my-5 text-secondary leading-[30px] md:text-xl text-[.8rem]">
               “Shop rẻ, sale nhiều, giá thành hợp lí, khuyến khích thêm voucher sale nhé.”
             </blockquote>
 
@@ -40,13 +40,13 @@ const Testimonials = () => {
               </div>
 
               <div className="space-y-1">
-                <h5 className="text-lg font-semibold">
+                <h5 className=" font-semibold md:text-xl text-[.8rem]">
                   Phản hồi của khách hàng
                 </h5>
                 <div className="flex items-center gap-2">
                   <FaStar className="text-yellow-400" />
-                  <span className="font-medium">4.9</span>
-                  <span className="text-[#807E7E]">(18.6k Lượt xem)</span>
+                  <span className="font-medium md:text-xl text-[.8rem]">4.9</span>
+                  <span className="text-[#807E7E] md:text-xl text-[.8rem]">(18.6k Lượt xem)</span>
                 </div>
               </div>
             </div>

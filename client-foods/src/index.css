@@ -58,3 +58,9 @@ body {
   border-bottom: #ebb22f;
   color: white;
 }
+#canvas{
+
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}

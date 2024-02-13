@@ -25,7 +25,7 @@ const Navbar = () => {
     queryKey: ["orders", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:6001/payments?email=${user?.email}`,
+        `https://be-vdev-foods-project.vercel.app/payments?email=${user?.email}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

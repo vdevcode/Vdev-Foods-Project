@@ -13,9 +13,8 @@ const CheckoutForm = ({ cart, cartTotals }) => {
   const axiosSecure = useAxiosSecure();
   const [successPayment, setSuccessPayment] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
+  const [voucherCode, setVoucherCode] = useState("");
 
-  // Tỷ giá hối đoái từ VND sang USD (tính theo tỷ giá thực tế hoặc cung cấp bởi dịch vụ hối đoái)
   const exchangeRate = 0.041;
 
   // Quy đổi tổng tiền từ VND sang USD
@@ -40,6 +39,17 @@ const CheckoutForm = ({ cart, cartTotals }) => {
   const handleSubmit = async (event) => {
     // Block native form submission.
     event.preventDefault();
+    // Kiểm tra xem có mã voucher không
+    const hasVoucher = !!voucherCode;
+    const paymentData = {
+      cartItem: cart.map((item) => item._id), // Lấy danh sách cartItem từ cart
+      cartTotals,
+      // Các thông tin khác của payment
+    };
+
+    if (hasVoucher) {
+      paymentData.voucherCode = voucherCode; // Thêm voucherCode vào paymentData chỉ khi có mã voucher
+    }
 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -85,51 +95,52 @@ const CheckoutForm = ({ cart, cartTotals }) => {
     if (confirmError) {
       alert(confirmError);
     }
-    setTimeout(() => {
-      if (paymentIntent.status === "succeeded") {
-        setSuccessPayment(
-          "Mua hàng thành công rồi." + ` Mã giao dịch: ${paymentIntent.id}`
-        );
-        const paymentInfor = {
-          idTransaction: paymentIntent.id,
-          name: user?.displayName || user?.name || "Ẩn danh",
-          email: user?.email || "không xác định được email",
-          cartTotals,
-          quantity: cart.length,
-          status: "Đơn hàng đang chờ xử lý",
-          itemName: cart.map((item, index) => item.name),
-          cartItem: cart.map((item, index) => item._id),
-          menuItems: cart.map((item, index) => item.menuItemId),
-        };
-        axiosSecure.post("/payments", paymentInfor).then((res) => {
-          navigate("/order");
-          console.log(res.data);
-          alert("Thanh toán thành công!!!");
-        });
-      } else {
-        setSuccessPayment("Thất bại");
-      }
-    }, 1000);
+
+    // Kiểm tra xem paymentIntent có tồn tại và có thuộc tính status không
+    if (paymentIntent && paymentIntent.status === "succeeded") {
+      setSuccessPayment(
+        "Mua hàng thành công rồi." + ` Mã giao dịch: ${paymentIntent.id}`
+      );
+      const paymentInfor = {
+        idTransaction: paymentIntent.id,
+        name: user?.displayName || user?.name || "Ẩn danh",
+        email: user?.email || "không xác định được email",
+        cartTotals,
+        quantity: cart.length,
+        status: "Đơn hàng đang chờ xử lý",
+        itemName: cart.map((item, index) => item.name),
+        cartItem: cart.map((item, index) => item._id),
+        menuItems: cart.map((item, index) => item.menuItemId),
+        // Thêm voucherCode vào paymentInfor nếu có mã voucher
+        ...(hasVoucher && { voucherCode: voucherCode }),
+      };
+      console.log(paymentInfor);
+      axiosSecure.post("/payments", paymentInfor).then((res) => {
+        navigate("/order");
+        console.log(res.data);
+        alert("Thanh toán thành công!!!");
+      });
+    } else {
+      setSuccessPayment("Thất bại");
+    }
   };
 
   return (
     <div>
       <div className="text-center mb-7 ">
-          <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
-            Thông tin<span className="text-green"> đơn hàng</span>
-          </h2>
-          <p className="text-[#4A4A4A] text-[1rem] md:text-xl">
-            Hình thức thanh toán trả trước
-          </p>
-        </div>
+        <h2 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
+          Thông tin<span className="text-green"> đơn hàng</span>
+        </h2>
+        <p className="text-[#4A4A4A] text-[1rem] md:text-xl">
+          Hình thức thanh toán trả trước
+        </p>
+      </div>
       <div className="flex flex-col md:flex-row justify-between gap-6 items-start">
-        
         {/* left */}
         <div className="md:w-1/2 space-y-3 w-full text-[.9rem]">
           {/* <h3 className="text-green">Thông tin thanh toán</h3> */}
           <p className="text-red mb-2">Tổng số lượng sản phẩm: {cart.length}</p>
           <p className="bg-black px-2 py-4 rounded-sm">
-
             {cart.map((item, index) => (
               <p className="text-green flex  items-center " key={index}>
                 {item.name} (<p className="text-white">số lượng:</p>{" "}
@@ -149,6 +160,13 @@ const CheckoutForm = ({ cart, cartTotals }) => {
             })}
             )
           </p>
+          <input
+            type="text"
+            placeholder="Nhập mã voucher"
+            value={voucherCode}
+            className="input rounded-sm input-bordered input-sm w-full max-w-xs"
+            onChange={(e) => setVoucherCode(e.target.value)}
+          />
         </div>
         {/* right */}
         <div className="md:w-1/3 w-full space-y-3 card rounded-sm shrink-0 max-w-sm border border-black px-4 py-8">

@@ -37,7 +37,7 @@ const Cards = ({ item }) => {
       };
 
       axios
-        .post("http://localhost:6001/cart", cartItem)
+        .post("https://be-vdev-foods-project.vercel.app/cart", cartItem)
         .then((response) => {
           if (response) {
             refetch(); // refetch cart

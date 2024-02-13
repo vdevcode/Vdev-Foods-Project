@@ -49,7 +49,7 @@ const Blog = () => {
                     src={items.image}
                     alt=""
                   />
-                  <div className="absolute top-0 right-0 bg-green text-white ">
+                  <div className="absolute top-0 right-0 bg-green text-white">
                     <button
                       className="p-2"
                       onClick={() =>
@@ -90,7 +90,6 @@ const Blog = () => {
                 </div>
 
                 <div className="flex items-center ">
-                  <IoDocumentTextOutline />
                   <p className="font-light text mt-2">
                     Nội dung: <i>{items.content}</i>
                   </p>

@@ -8,8 +8,11 @@ import { IoSettings } from "react-icons/io5";
 import { IoLogOutSharp } from "react-icons/io5";
 import useCart from "../hooks/useCart";
 import { MdAdminPanelSettings, MdPayments } from "react-icons/md";
+import useAdmin from "../hooks/useAdmin";
 
 const Profile = ({ user, orders }) => {
+
+  const [isAdmin, isAdminLoading] = useAdmin()
 
   const [cart,refetch] = useCart()
 
@@ -89,7 +92,9 @@ const Profile = ({ user, orders }) => {
             <li>
               <Link to="/cart-pay">
                 <FaShoppingCart />
-                <a>Giỏ hàng</a>({cart.length})
+                <a>Giỏ hàng</a>{
+                  cart?.length ? (`(${cart?.length})`): ("đang load")
+                 }
               </Link>
             </li>
           </div>
@@ -97,7 +102,7 @@ const Profile = ({ user, orders }) => {
             <li>
               <Link to="/order">
                 <MdPayments />
-                <a>Đơn hàng đã mua</a>({orders.length})
+                <a>Đơn hàng đã mua</a>{ orders?.length ? (`(${orders?.length})`) : ("đang load") }
               </Link>
             </li>
           </div>
@@ -110,13 +115,15 @@ const Profile = ({ user, orders }) => {
               </Link>
             </li>
           </div>
-          <div className="flex items-center">
+          {
+            isAdmin ? (<div className="flex items-center">
          
             <li className="flex items-center">
               
               <Link to="/dashboard">    <MdAdminPanelSettings />Trang quản trị (admin)</Link>
             </li>
-          </div>
+          </div>) : ("")
+          }
           <div className="flex items-center">
          
             <li onClick={handleLogout} className="flex items-center">

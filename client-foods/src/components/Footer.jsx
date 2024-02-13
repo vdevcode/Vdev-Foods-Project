@@ -1,14 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo/logo.png";
 
 const Footer = () => {
   return (
     <div className="">
-      <footer className="footer bg-green footer-center py-10  text-base-content rounded">
+      <footer className="footer bg-green footer-center py-10  text-base-content">
+        {/* <nav className="p-2 bg-white rounded-full">
+          <img src={Logo} alt="" className="w-[60px] h-[60px]" />
+        </nav> */}
         <nav className="flex items-center gap-4 text-white">
           <a className="link link-hover">Về Vdevfoods</a>
           <a className="link link-hover">Liên hệ</a>
-          <a className="link link-hover">Blog</a>
+          <Link to="/blog">
+            <a className="link link-hover">Blog</a>
+          </Link>
           <a className="link link-hover">Bài báo</a>
         </nav>
         <nav>

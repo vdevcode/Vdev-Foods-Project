@@ -17,8 +17,6 @@ const ManagerBooking = () => {
     },
   });
 
-
-
   const formatDate = (createAt) => {
     const createAtDate = new Date(createAt);
     const day = createAtDate.getDate();
@@ -62,7 +60,7 @@ const ManagerBooking = () => {
         }
       }
     });
-  }
+  };
 
   return (
     <div className="w-full md:w-[870px] mt-4">
@@ -120,11 +118,18 @@ const ManagerBooking = () => {
                   <td>{"Đang cập nhật..."}</td>
                   <td>{order.quantity}</td>
                   <td>
-                    {order.cartTotals.toLocaleString("vi-VN", {
-                      minimumFractionDigits: 3,
-                    })}
-                    VND
+                    {order.cartTotals ? (
+                      <>
+                        {order.cartTotals.toLocaleString("vi-VN", {
+                          minimumFractionDigits: 3,
+                        })}
+                        VND
+                      </>
+                    ) : (
+                      "N/A"
+                    )}
                   </td>
+
                   <td className="text-red">{order.status}</td>
                   <td>{formatDate(order.createAt)}</td>
                   <td>
@@ -140,7 +145,10 @@ const ManagerBooking = () => {
                     )}
                   </td>
                   <td>
-                    <button onClick={() => handleDeleteBooking(order)} className="btn btn-ghost btn-xs border bg-red border-red text-white">
+                    <button
+                      onClick={() => handleDeleteBooking(order)}
+                      className="btn btn-ghost btn-xs border bg-red border-red text-white"
+                    >
                       <FaTrashAlt />
                     </button>
                   </td>
